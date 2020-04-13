@@ -1,0 +1,20 @@
+{
+  "name": "FinalProject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yrrah/cs5200-spring2020-hartenstine.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yrrah/cs5200-spring2020-hartenstine/issues"
+  },
+  "homepage": "https://github.com/yrrah/cs5200-spring2020-hartenstine#readme"
+}
