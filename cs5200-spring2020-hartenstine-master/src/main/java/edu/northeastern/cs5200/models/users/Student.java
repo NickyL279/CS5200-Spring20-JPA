@@ -12,7 +12,8 @@ public class Student extends User{
 //    @OneToMany(mappedBy = "resume")
 //    private List<Resume> studentResumes;
 
-
+    @OneToMany(mappedBy = "student")
+    private List<Application> applications;
     public Student() {}
 
 //    public Student(Boolean verified, Boolean userAgreement) {
@@ -33,7 +34,13 @@ public class Student extends User{
         this.verified = verified;
         this.userAgreement = userAgreement;
     }
+    public void addApplication(Application a) {
+        applications.add(a);
+    }
 
+    public void removeApplication(Application a) {
+        applications.remove(a);
+    }
     public Boolean getVerified() {
         return verified;
     }
