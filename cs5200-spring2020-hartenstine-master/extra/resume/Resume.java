@@ -1,4 +1,4 @@
-package edu.northeastern.cs5200.models.users;
+package edu.northeastern.cs5200.models.resume;
 
 import java.util.List;
 
@@ -8,6 +8,9 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+
+import edu.northeastern.cs5200.models.users.Student;
+
 public class Resume {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -123,9 +126,9 @@ public class Resume {
 
     public void setThisStudentResume(Student thisStudentResume) {
         this.thisStudentResume =  thisStudentResume;
-        if (!thisStudentResume.getResumesForThisStudent().contains(this)) {
-            thisStudentResume.getResumesForThisStudent().add(this);
-        }
+//        if (!thisStudentResume.getResumesForThisStudent().contains(this)) {
+//            thisStudentResume.getResumesForThisStudent().add(this);
+//        }
     }
 
 

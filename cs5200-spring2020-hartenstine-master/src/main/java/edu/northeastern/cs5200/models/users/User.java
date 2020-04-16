@@ -1,9 +1,13 @@
 package edu.northeastern.cs5200.models.users;
 
+import java.util.Collection;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class User {
@@ -15,16 +19,12 @@ public class User {
   private String lastName;
   private String username;
   private String password;
+  @OneToMany(cascade = javax.persistence.CascadeType.ALL, orphanRemoval=true, mappedBy = "user")
+  private List<Phone> phones;
+  @OneToMany(cascade = javax.persistence.CascadeType.ALL, orphanRemoval=true, mappedBy = "user")
+  private List<Address> addresses;
 
   public User() {
-  }
-
-  public User(int id, String firstName, String lastName, String username, String password) {
-    this.id = id;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.username = username;
-    this.password = password;
   }
 
   public User(String firstName, String lastName, String username, String password) {
@@ -32,6 +32,16 @@ public class User {
     this.lastName = lastName;
     this.username = username;
     this.password = password;
+  }
+
+  public User(int id, String firstName, String lastName, String username, String password, List<Phone> phones, List<Address> addresses) {
+    this.id = id;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.username = username;
+    this.password = password;
+    this.phones = phones;
+    this.addresses = addresses;
   }
 
   public int getId() {
@@ -74,4 +84,19 @@ public class User {
     this.password = password;
   }
 
+  public List<Phone> getPhones() {
+    return phones;
+  }
+
+  public void setPhones(List<Phone> phones) {
+    this.phones = phones;
+  }
+
+  public List<Address> getAddresses() {
+    return addresses;
+  }
+
+  public void setAddresses(List<Address> addresses) {
+    this.addresses = addresses;
+  }
 }

@@ -1,9 +1,11 @@
-package edu.northeastern.cs5200.models.users;
+package edu.northeastern.cs5200.models.job;
 
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -20,6 +22,10 @@ public class Job {
 
   @OneToMany(mappedBy = "job")
   private List<Application> applications;
+
+  public Job(){
+
+  }
 
   public Job(String title, String description, String company, String location, String requirement) {
     this.title = title;

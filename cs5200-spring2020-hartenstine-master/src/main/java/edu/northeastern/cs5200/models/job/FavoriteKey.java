@@ -1,4 +1,4 @@
-package edu.northeastern.cs5200.models;
+package edu.northeastern.cs5200.models.job;
 
 
 import java.io.Serializable;
@@ -13,24 +13,24 @@ public class FavoriteKey implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 
-    private Integer applicant;
+    private Integer student;
 
     private Integer job;
 
   public FavoriteKey() {
   }
 
-  public FavoriteKey(Integer applicant, Integer job) {
-    this.applicant = applicant;
+  public FavoriteKey(Integer student, Integer job) {
+    this.student = student;
     this.job = job;
   }
 
-  public Integer getApplicant() {
-		return applicant;
+  public Integer getStudent() {
+		return student;
 	}
 
-	public void setApplicant(Integer studentId) {
-		this.applicant = studentId;
+	public void setStudent(Integer studentId) {
+		this.student = studentId;
 	}
 
 	public Integer getJob() {
@@ -46,7 +46,7 @@ public class FavoriteKey implements Serializable{
         final int prime = 31;
         int result = 1;
         result = prime * result + ((job == null) ? 0 : job.hashCode());
-        result = prime * result + ((applicant == null) ? 0 : applicant.hashCode());
+        result = prime * result + ((student == null) ? 0 : student.hashCode());
         return result;
     }
 
@@ -64,9 +64,9 @@ public class FavoriteKey implements Serializable{
                 return false;
         } else if (!job.equals(other.job))
             return false;
-        if (applicant == null) {
-          return other.applicant == null;
-        } else return applicant.equals(other.applicant);
+        if (student == null) {
+          return other.student == null;
+        } else return student.equals(other.student);
     }
     
 

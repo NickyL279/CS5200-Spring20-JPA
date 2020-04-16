@@ -1,4 +1,4 @@
-package edu.northeastern.cs5200.models;
+package edu.northeastern.cs5200.models.job;
 
 import java.sql.Date;
 
@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 
-import edu.northeastern.cs5200.models.users.Applicant;
+import edu.northeastern.cs5200.models.users.Student;
 
 @Entity
 public class Favorite {
@@ -18,8 +18,8 @@ public class Favorite {
   private Date followup;
 
   @ManyToOne
-  @MapsId("applicant")
-  private Applicant applicant;
+  @MapsId("student")
+  private Student student;
 
   @ManyToOne
   @MapsId("job")
@@ -28,15 +28,15 @@ public class Favorite {
   public Favorite() {
   }
 
-  public Favorite(FavoriteKey id, Date followup, Applicant applicant, Job job) {
+  public Favorite(FavoriteKey id, Date followup, Student student, Job job) {
     this.id = id;
     this.followup = followup;
-    this.applicant = applicant;
+    this.student = student;
     this.job = job;
   }
 
-  public Favorite(Applicant applicant, Job job) {
-    this.applicant = applicant;
+  public Favorite(Student student, Job job) {
+    this.student = student;
     this.job = job;
     this.id = new FavoriteKey();
   }
@@ -57,12 +57,12 @@ public class Favorite {
     this.followup = grade;
   }
 
-  public Applicant getApplicant() {
-    return applicant;
+  public Student getStudent() {
+    return student;
   }
 
-  public void setApplicant(Applicant applicant) {
-    this.applicant = applicant;
+  public void setStudent(Student student) {
+    this.student = student;
   }
 
   public Job getJob() {

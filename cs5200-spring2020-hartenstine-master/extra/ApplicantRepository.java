@@ -3,8 +3,8 @@ package edu.northeastern.cs5200.repositories;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import edu.northeastern.cs5200.models.job.Favorite;
+import edu.northeastern.cs5200.models.users.Student;
 
 @Repository
-public interface FavoriteRepository extends CrudRepository<Favorite, Integer> {
+public interface ApplicantRepository extends CrudRepository<Student, Integer> {
 }

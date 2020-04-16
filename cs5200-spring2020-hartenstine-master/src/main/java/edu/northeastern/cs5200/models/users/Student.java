@@ -1,67 +1,122 @@
 package edu.northeastern.cs5200.models.users;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+import edu.northeastern.cs5200.models.job.Favorite;
+
 @Entity
-public class Student extends User{
-    private Boolean verified;
-    private Boolean userAgreement;
+public class Student extends User {
 
-//    @OneToMany(mappedBy = "resume")
-//    private List<Resume> studentResumes;
+  private Integer gradYear;
+  private Integer scholarship;
+  private StudentMajor major;
+  @OneToOne
+  private StudentAgreement agreement;
 
-    @OneToMany(mappedBy = "student")
-    private List<Application> applications;
-    public Student() {}
 
-//    public Student(Boolean verified, Boolean userAgreement) {
-//        this.verified = verified;
-//        this.userAgreement = userAgreement;
-//        this.studentResumes = studentResumes;
-//    }
-//
-//    public Student(int id, String firstName, String lastName, String username, String password, Boolean verified, Boolean userAgreement, List<Resume> studentResumes) {
-//        super(id, firstName, lastName, username, password);
-//        this.verified = verified;
-//        this.userAgreement = userAgreement;
-//        this.studentResumes = studentResumes;
-//    }
+  @OneToMany(mappedBy = "student")
+  private List<Favorite> favorites;
 
-    public Student(String firstName, String lastName, String username, String password, Boolean verified, Boolean userAgreement) {
-        super(firstName, lastName, username, password);
-        this.verified = verified;
-        this.userAgreement = userAgreement;
-    }
-    public void addApplication(Application a) {
-        applications.add(a);
-    }
+  @ManyToOne()
+  private Advisor advisor;
 
-    public void removeApplication(Application a) {
-        applications.remove(a);
-    }
-    public Boolean getVerified() {
-        return verified;
-    }
+  public Student() {
+  }
 
-    public void setVerified(Boolean verified) {
-        this.verified = verified;
-    }
+  public Student(String firstName, String lastName, String username, String password, Integer gradYear, Integer scholarship) {
+    super(firstName, lastName, username, password);
+    this.gradYear = gradYear;
+    this.scholarship = scholarship;
+  }
 
-    public Boolean getUserAgreement() {
-        return userAgreement;
-    }
+  public Student(Integer gradYear, Integer scholarship, StudentMajor major, List<Favorite> favorites, Advisor advisor) {
+    this.gradYear = gradYear;
+    this.scholarship = scholarship;
+    this.major = major;
+    this.favorites = favorites;
+    this.advisor = advisor;
+  }
 
-    public void setUserAgreement(Boolean userAgreement) {
-        this.userAgreement = userAgreement;
-    }
+  public Student(String firstName, String lastName, String username, String password, Integer gradYear, Integer scholarship, StudentMajor major, List<Favorite> favorites, Advisor advisor) {
+    super(firstName, lastName, username, password);
+    this.gradYear = gradYear;
+    this.scholarship = scholarship;
+    this.major = major;
+    this.favorites = favorites;
+    this.advisor = advisor;
+  }
 
-//    public List<Resume> getStudentResumes() {
-//        return studentResumes;
-//    }
-//
-//    public void setStudentResumes(List<Resume> studentResumes) {
-//        this.studentResumes = studentResumes;
-//    }
+  public Student(int id, String firstName, String lastName, String username, String password, List<Phone> phones, List<Address> addresses, Integer gradYear, Integer scholarship, StudentMajor major, List<Favorite> favorites, Advisor advisor) {
+    super(id, firstName, lastName, username, password, phones, addresses);
+    this.gradYear = gradYear;
+    this.scholarship = scholarship;
+    this.major = major;
+    this.favorites = favorites;
+    this.advisor = advisor;
+  }
+
+  public Student(int id, String firstName, String lastName, String username, String password, List<Phone> phones, List<Address> addresses, Integer gradYear, Integer scholarship, StudentMajor major, StudentAgreement agreement, List<Favorite> favorites, Advisor advisor) {
+    super(id, firstName, lastName, username, password, phones, addresses);
+    this.gradYear = gradYear;
+    this.scholarship = scholarship;
+    this.major = major;
+    this.agreement = agreement;
+    this.favorites = favorites;
+    this.advisor = advisor;
+  }
+
+  public StudentAgreement getAgreement() {
+    return agreement;
+  }
+
+  public void setAgreement(StudentAgreement agreement) {
+    this.agreement = agreement;
+  }
+
+  public Integer getGradYear() {
+    return gradYear;
+  }
+
+  public void setGradYear(Integer gradYear) {
+    this.gradYear = gradYear;
+  }
+
+  public Integer getScholarship() {
+    return scholarship;
+  }
+
+  public void setScholarship(Integer scholarship) {
+    this.scholarship = scholarship;
+  }
+
+  public StudentMajor getMajor() {
+    return major;
+  }
+
+  public void setMajor(StudentMajor major) {
+    this.major = major;
+  }
+
+  public List<Favorite> getFavorites() {
+    return favorites;
+  }
+
+  public void setFavorites(List<Favorite> favorites) {
+    this.favorites = favorites;
+  }
+
+  public Advisor getAdvisor() {
+    return advisor;
+  }
+
+  public void setAdvisor(Advisor advisor) {
+    this.advisor = advisor;
+  }
 }
+
+

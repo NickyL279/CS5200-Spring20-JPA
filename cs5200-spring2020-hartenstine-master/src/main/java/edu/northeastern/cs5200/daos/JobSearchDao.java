@@ -4,10 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import edu.northeastern.cs5200.models.users.Advisor;
-import edu.northeastern.cs5200.models.users.Applicant;
+import edu.northeastern.cs5200.models.users.Student;
 import edu.northeastern.cs5200.models.users.User;
 import edu.northeastern.cs5200.repositories.AdvisorRepository;
-import edu.northeastern.cs5200.repositories.ApplicantRepository;
 import edu.northeastern.cs5200.repositories.FavoriteRepository;
 import edu.northeastern.cs5200.repositories.JobRepository;
 import edu.northeastern.cs5200.repositories.UserRepository;
@@ -20,9 +19,6 @@ public class JobSearchDao {
 
   @Autowired
   private AdvisorRepository advisorRepository;
-
-  @Autowired
-  private ApplicantRepository applicantRepository;
 
   @Autowired
   private FavoriteRepository favoriteRepository;
@@ -46,8 +42,5 @@ public class JobSearchDao {
     return advisor;
   }
 
-  public Applicant createApplicant(Applicant applicant) {
-    applicantRepository.save(applicant);
-    return applicant;
-  }
+
 }

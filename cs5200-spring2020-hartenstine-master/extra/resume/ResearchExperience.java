@@ -1,4 +1,4 @@
-package edu.northeastern.cs5200.models;
+package edu.northeastern.cs5200.models.resume;
 import java.util.Date;
 import java.util.List;
 
