@@ -14,7 +14,7 @@ public class Phone {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
   private String phone;
-  private Boolean primary;
+  private Boolean primary_;//can't name it "primary", reserved by SQL
   @ManyToOne
   private User user;
 
@@ -22,22 +22,22 @@ public class Phone {
 
   }
 
-  public Phone(String phone, Boolean primary) {
+  public Phone(String phone, Boolean primary_) {
     this.phone = phone;
-    this.primary = primary;
+    this.primary_ = primary_;
   }
 
-  public Phone(int id, String phone, Boolean primary, User user) {
+  public Phone(int id, String phone, Boolean primary_, User user) {
     this.id = id;
     this.phone = phone;
-    this.primary = primary;
+    this.primary_ = primary_;
     this.user = user;
   }
 
-  public Phone(Integer id, String phone, boolean primary) {
+  public Phone(Integer id, String phone, boolean primary_) {
     this.id = id;
     this.phone = phone;
-    this.primary = primary;
+    this.primary_ = primary_;
   }
 
   public int getId() {
@@ -56,12 +56,12 @@ public class Phone {
     this.phone = phone;
   }
 
-  public Boolean getPrimary() {
-    return primary;
+  public Boolean getPrimary_() {
+    return primary_;
   }
 
-  public void setPrimary(Boolean primary) {
-    this.primary = primary;
+  public void setPrimary_(Boolean primary) {
+    this.primary_ = primary;
   }
 
   public User getUser() {

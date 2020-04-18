@@ -27,7 +27,7 @@ public class JobList {
   private StudentMajor allowedMajor;
   @ManyToOne
   private Advisor advisor;
-  @OneToMany(mappedBy="joblist")
+  @OneToMany(mappedBy="jobList")
   private List<Job> job;
 
   @ManyToOne
@@ -39,7 +39,7 @@ public class JobList {
 
   }
 
-  public JobList(Integer id, String title, StudentMajor allowedMajor, Advisor advisor, Job job, JobList parent, List<JobList> children) {
+  public JobList(Integer id, String title, StudentMajor allowedMajor, Advisor advisor, List<Job> job, JobList parent, List<JobList> children) {
     this.id = id;
     this.title = title;
     this.allowedMajor = allowedMajor;
@@ -81,11 +81,11 @@ public class JobList {
     this.advisor = advisor;
   }
 
-  public Job getJob() {
+  public List<Job> getJob() {
     return job;
   }
 
-  public void setJob(Job job) {
+  public void setJob(List<Job> job) {
     this.job = job;
   }
 

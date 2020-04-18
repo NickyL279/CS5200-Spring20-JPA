@@ -17,7 +17,7 @@ public class Address {
   private String city;
   private String state;
   private String zip;
-  private Boolean primary;
+  private Boolean primary_;//can't name it "primary", reserved by SQL
   @ManyToOne
   private User user;
 
@@ -25,21 +25,21 @@ public class Address {
 
   }
 
-  public Address(String street1, String city, String zip, Boolean primary) {
+  public Address(String street1, String city, String zip, Boolean primary_) {
     this.street1 = street1;
     this.city = city;
     this.zip = zip;
-    this.primary = primary;
+    this.primary_ = primary_;
   }
 
-  public Address(int id, String street1, String street2, String city, String state, String zip, Boolean primary, User user) {
+  public Address(int id, String street1, String street2, String city, String state, String zip, Boolean primary_, User user) {
     this.id = id;
     this.street1 = street1;
     this.street2 = street2;
     this.city = city;
     this.state = state;
     this.zip = zip;
-    this.primary = primary;
+    this.primary_ = primary_;
     this.user = user;
   }
 
@@ -91,12 +91,12 @@ public class Address {
     this.zip = zip;
   }
 
-  public Boolean getPrimary() {
-    return primary;
+  public Boolean getPrimary_() {
+    return primary_;
   }
 
-  public void setPrimary(Boolean primary) {
-    this.primary = primary;
+  public void setPrimary_(Boolean primary) {
+    this.primary_ = primary;
   }
 
   public User getUser() {

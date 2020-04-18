@@ -1,6 +1,5 @@
 package edu.northeastern.cs5200.models.users;
 
-import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.Entity;
