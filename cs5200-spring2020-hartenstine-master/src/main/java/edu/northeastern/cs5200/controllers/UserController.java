@@ -58,7 +58,7 @@ public class UserController {
   }
 
   @GetMapping("/api/addAdvisor")
-  public String addStudent() {
+  public String addAdvisor() {
     Student s1=new Student("alice", "wonder", "username", "pass",2020,2000);
     Student s2=new Student("Bob", "Mark", "username", "pass",2021,2000);
     List<Student> s=new ArrayList<>();
