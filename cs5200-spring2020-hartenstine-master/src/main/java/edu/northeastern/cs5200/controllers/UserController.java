@@ -45,28 +45,48 @@ public class UserController {
   }
 
 
-  @GetMapping("/api/addUser")
-  public String addUser() {
-    userRepository.save(new User("alice", "wonder", "username", "pass"));
-    return "done";
+  @PostMapping("/api/adduser")
+  public User createUser(@RequestBody User user) {
+    return userRepository.save(user);
+  }
+  @PostMapping("/api/addadvisor")
+  public Advisor createAdviosr(@RequestBody Advisor advisor) {
+    return advisorRepository.save(advisor);
+  }
+  @PostMapping("/api/addstudent")
+  public Student createStudent(@RequestBody Student student) {
+    return studentRepository.save(student);
+  }
+  @PostMapping("/api/addadmin")
+  public Admin createAdmin(@RequestBody Admin admin) {
+    return adminRepository.save(admin);
   }
 
-  @GetMapping("/api/addStudent")
-  public String addStudent() {
-    studentRepository.save(new Student("alice", "wonder", "username", "pass",2020,2000));
-    return "done";
-  }
+//  @GetMapping("/api/addUser")
+//  public String addUser() {
+//    userRepository.save(new User("alice", "wonder", "username", "pass"));
+//    return "done";
+//  }
+//
+//  @GetMapping("/api/addStudent")
+//  public String addStudent() {
+//    studentRepository.save(new Student("alice", "wonder", "username", "pass",2020,2000));
+//    return "done";
+//  }
+//
+//  @GetMapping("/api/addAdvisor")
+//  public String addAdvisor() {
+//    Student s1=new Student("alice", "wonder", "username", "pass",2020,2000);
+//    Student s2=new Student("Bob", "Mark", "username", "pass",2021,2000);
+//    List<Student> s=new ArrayList<>();
+//    s.add(s1);
+//    s.add(s2);
+//
+//    advisorRepository.save(new Advisor("Adam", "Copper", "username", "pass","A1",true,s));
+//    return "done";
+//  }
 
-  @GetMapping("/api/addAdvisor")
-  public String addAdvisor() {
-    Student s1=new Student("alice", "wonder", "username", "pass",2020,2000);
-    Student s2=new Student("Bob", "Mark", "username", "pass",2021,2000);
-    List<Student> s=new ArrayList<>();
-    s.add(s1);
-    s.add(s2);
 
-    advisorRepository.save(new Advisor("Adam", "Copper", "username", "pass","A1",true,s));
-    return "done";
-  }
+
 
 }
