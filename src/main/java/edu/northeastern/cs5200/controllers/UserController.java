@@ -97,6 +97,45 @@ public class UserController {
   public JobList createJobList(@RequestBody JobList jobList) {
     return jobListRepository.save(jobList);
   }
+  @DeleteMapping("/api/users/{userId}")
+  public void deleteUser
+          (@PathVariable("userId") int id) {
+    userRepository.deleteById(id);
+  }
+
+  @DeleteMapping("/api/students/{studentId}")
+  public void deleteStudent
+          (@PathVariable("studentId") int id) {
+    studentRepository.deleteById(id);
+  }
+  @DeleteMapping("/api/advisors/{advisorId}")
+  public void deleteAdvisor
+          (@PathVariable("advisorId") int id) {
+    advisorRepository.deleteById(id);
+  }
+  @DeleteMapping("/api/admins/{adminId}")
+  public void deleteAdmin
+          (@PathVariable("adminId") int id) {
+    adminRepository.deleteById(id);
+  }
+
+  @DeleteMapping("/api/applications/{applicationId}")
+  public void deleteApplication
+          (@PathVariable("applicationId") int id) {
+    applicationRepository.deleteById(id);
+  }
+
+  @DeleteMapping("/api/jobs/{jobId}")
+  public void deleteJob
+          (@PathVariable("jobId") int id) {
+    jobRepository.deleteById(id);
+  }
+
+  @DeleteMapping("/api/jobLists/{jobListId}")
+  public void deleteJobList
+          (@PathVariable("jobListId") int id) {
+    jobListRepository.deleteById(id);
+  }
 
 //  @GetMapping("/api/addUser")
 //  public String addUser() {
