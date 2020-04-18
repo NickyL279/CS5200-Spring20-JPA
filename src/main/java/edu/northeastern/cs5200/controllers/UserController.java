@@ -1,6 +1,7 @@
 package edu.northeastern.cs5200.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,6 +14,7 @@ import edu.northeastern.cs5200.repositories.*;
 import edu.northeastern.cs5200.models.job.*;
 
 @RestController
+@CrossOrigin
 public class UserController {
 
   @Autowired
@@ -34,7 +36,7 @@ public class UserController {
   JobListRepository jobListRepository;
 
 
-
+  @CrossOrigin(origins="http://localhost:3000")
   @GetMapping("/api/allUsers")
   public List<User> allUsers() {
     return (List<User>) userRepository.findAll();
