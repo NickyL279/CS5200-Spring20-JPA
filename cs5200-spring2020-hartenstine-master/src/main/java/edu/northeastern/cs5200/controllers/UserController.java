@@ -21,9 +21,11 @@ public class UserController {
     return (List<User>) userRepository.findAll();
   }
 
+
   @GetMapping("/api/addUser")
   public String addUser() {
     userRepository.save(new User("alice", "wonder", "username", "pass"));
+    System.out.prin("");
     return "done";
   }
 
