@@ -16,16 +16,56 @@ public class UserController {
   @Autowired
   UserRepository userRepository;
 
+  @Autowired
+  AdvisorRepository advisorRepository;
+
+  @Autowired
+  StudentRepository studentRepository;
+
+  @Autowired
+  AdminRepository adminRepository;
+
+
+
   @GetMapping("/api/allUsers")
   public List<User> allUsers() {
     return (List<User>) userRepository.findAll();
+  }
+  @GetMapping("/api/allAdvisors")
+  public List<Advisor> allAdvisor() {
+    return (List<Advisor>) advisorRepository.findAll();
+  }
+  @GetMapping("/api/allStudents")
+  public List<Student> allStudents() {
+    return (List<Student>) studentRepository.findAll();
+  }
+  @GetMapping("/api/allAdmins")
+  public List<Admin> allAdmins() {
+    return (List<Admin>) adminRepository.findAll();
   }
 
 
   @GetMapping("/api/addUser")
   public String addUser() {
     userRepository.save(new User("alice", "wonder", "username", "pass"));
-    System.out.prin("");
+    return "done";
+  }
+
+  @GetMapping("/api/addStudent")
+  public String addStudent() {
+    studentRepository.save(new Student("alice", "wonder", "username", "pass",2020,2000));
+    return "done";
+  }
+
+  @GetMapping("/api/addAdvisor")
+  public String addStudent() {
+    Student s1=new Student("alice", "wonder", "username", "pass",2020,2000);
+    Student s2=new Student("Bob", "Mark", "username", "pass",2021,2000);
+    List<Student> s=new ArrayList<>();
+    s.add(s1);
+    s.add(s2);
+
+    advisorRepository.save(new Advisor("Adam", "Copper", "username", "pass","A1",true,s));
     return "done";
   }
 
