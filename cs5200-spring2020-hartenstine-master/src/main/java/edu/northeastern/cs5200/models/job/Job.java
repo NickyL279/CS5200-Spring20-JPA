@@ -19,7 +19,8 @@ public class Job {
   private String location;
   private String requirement;
 
-
+  @ManyToOne(mappedBy="job")
+  private JobList joblist;
   @OneToMany(mappedBy = "job")
   private List<Application> applications;
 

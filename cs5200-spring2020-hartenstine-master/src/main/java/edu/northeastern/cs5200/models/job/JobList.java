@@ -27,8 +27,8 @@ public class JobList {
   private StudentMajor allowedMajor;
   @ManyToOne
   private Advisor advisor;
-  @ManyToOne
-  private Job job;
+  @OneToMany(mappedBy="joblist")
+  private List<Job> job;
 
   @ManyToOne
   private JobList parent;
