@@ -7,8 +7,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-import edu.northeastern.cs5200.models.users.User;
-import edu.northeastern.cs5200.repositories.UserRepository;
+import edu.northeastern.cs5200.models.users.*;
+import edu.northeastern.cs5200.repositories.*;
+import edu.northeastern.cs5200.models.job.*;
 
 @RestController
 public class UserController {
