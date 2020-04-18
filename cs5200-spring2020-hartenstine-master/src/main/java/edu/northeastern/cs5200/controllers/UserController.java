@@ -24,7 +24,13 @@ public class UserController {
   StudentRepository studentRepository;
 
   @Autowired
+  ApplicationRepository applicationRepository;
+  @Autowired
   AdminRepository adminRepository;
+  @Autowired
+  JobRepository jobRepository;
+  @Autowired
+  JobListRepository jobListRepository;
 
 
 
@@ -44,6 +50,19 @@ public class UserController {
   public List<Admin> allAdmins() {
     return (List<Admin>) adminRepository.findAll();
   }
+  @GetMapping("/api/allApplications")
+  public List<Applications> allApplications() {
+    return (List<Application>) applicationRepository.findAll();
+  }
+  @GetMapping("/api/allJobs")
+  public List<Job> allJobs() {
+    return (List<Job>) jobRepository.findAll();
+  }
+  @GetMapping("/api/allJobList")
+  public List<JobList> allJobList() {
+    return (List<JobList>) jobListRepository.findAll();
+  }
+
 
 
   @PostMapping("/api/adduser")
@@ -61,6 +80,19 @@ public class UserController {
   @PostMapping("/api/addadmin")
   public Admin createAdmin(@RequestBody Admin admin) {
     return adminRepository.save(admin);
+  }
+  @PostMapping("/api/addapplication")
+  public Application createApplication(@RequestBody Application application) {
+    return applicationRepository.save(application);
+  }
+
+  @PostMapping("/api/addJob")
+  public Job createJob(@RequestBody Job job) {
+    return jobRepository.save(job);
+  }
+  @PostMapping("/api/addJobList")
+  public JobList createJobList(@RequestBody JobList jobList) {
+    return jobListRepository.save(jobList);
   }
 
 //  @GetMapping("/api/addUser")
