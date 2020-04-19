@@ -143,7 +143,7 @@ public class UserController {
           @PathVariable("studentId") int sId) {
     Student student = studentRepository.findOne(sId);
     return student.getApplication();
-  }}
+  }
 
   //find all applications received for a job
   @GetMapping("/api/job/{jobId}/applications")
@@ -151,7 +151,7 @@ public class UserController {
           @PathVariable("jobId") int jId) {
     Job job = jobRepository.findOne(jId);
     return job.getApplication();
-  }}
+  }
 
 
 //  @GetMapping("/api/addUser")
