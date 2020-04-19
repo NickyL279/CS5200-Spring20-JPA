@@ -7,6 +7,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import edu.northeastern.cs5200.models.job.Application;
 import edu.northeastern.cs5200.models.job.Favorite;
 
 @Entity

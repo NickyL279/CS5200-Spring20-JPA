@@ -1,11 +1,7 @@
 package edu.northeastern.cs5200.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -141,7 +137,7 @@ public class UserController {
   @GetMapping("/api/student/{studentId}/applications")
   public List<Application> findAllApplicationsForStudent(
           @PathVariable("studentId") int sId) {
-    Student student = studentRepository.findOne(sId);
+    Student student = studentRepository.findById(sId).orElse(null);
     return student.getApplication();
   }
 
@@ -149,8 +145,8 @@ public class UserController {
   @GetMapping("/api/job/{jobId}/applications")
   public List<Application> findAllApplicationsForJob(
           @PathVariable("jobId") int jId) {
-    Job job = jobRepository.findOne(jId);
-    return job.getApplication();
+    Job job = jobRepository.findById(jId).orElse(null);
+    return job.getApplications();
   }
 
 
