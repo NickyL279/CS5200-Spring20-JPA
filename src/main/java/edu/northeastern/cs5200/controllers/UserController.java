@@ -32,7 +32,6 @@ public class UserController {
   JobListRepository jobListRepository;
 
 
-  @CrossOrigin(origins="http://localhost:3000")
   @GetMapping("/api/allUsers")
   public List<User> allUsers() {
     return (List<User>) userRepository.findAll();
@@ -138,6 +137,7 @@ public class UserController {
   public List<Application> findAllApplicationsForStudent(
           @PathVariable("studentId") int sId) {
     Student student = studentRepository.findById(sId).orElse(null);
+    assert student != null;
     return student.getApplication();
   }
 
@@ -146,6 +146,7 @@ public class UserController {
   public List<Application> findAllApplicationsForJob(
           @PathVariable("jobId") int jId) {
     Job job = jobRepository.findById(jId).orElse(null);
+    assert job != null;
     return job.getApplications();
   }
 
