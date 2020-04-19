@@ -21,6 +21,8 @@ public class Student extends User {
 
   @OneToMany(mappedBy = "student")
   private List<Favorite> favorites;
+  @OneToMany(mappedBy = "student")
+  private List<Application> application;
 
   @ManyToOne()
   private Advisor advisor;
@@ -108,6 +110,14 @@ public class Student extends User {
 
   public void setFavorites(List<Favorite> favorites) {
     this.favorites = favorites;
+  }
+
+  public List<Application> getApplication() {
+    return application;
+  }
+
+  public void setApplication(List<Application> application) {
+    this.application = application;
   }
 
   public Advisor getAdvisor() {

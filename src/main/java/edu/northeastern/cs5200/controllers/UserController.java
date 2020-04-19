@@ -137,6 +137,23 @@ public class UserController {
     jobListRepository.deleteById(id);
   }
 
+//find all applications submitted by a student
+  @GetMapping("/api/student/{studentId}/applications")
+  public List<Application> findAllApplicationsForStudent(
+          @PathVariable("studentId") int sId) {
+    Student student = studentRepository.findOne(sId);
+    return student.getApplication();
+  }}
+
+  //find all applications received for a job
+  @GetMapping("/api/job/{jobId}/applications")
+  public List<Application> findAllApplicationsForJob(
+          @PathVariable("jobId") int jId) {
+    Job job = jobRepository.findOne(jId);
+    return job.getApplication();
+  }}
+
+
 //  @GetMapping("/api/addUser")
 //  public String addUser() {
 //    userRepository.save(new User("alice", "wonder", "username", "pass"));
