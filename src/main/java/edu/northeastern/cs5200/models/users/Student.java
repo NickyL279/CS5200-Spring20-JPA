@@ -31,8 +31,8 @@ public class Student extends User {
   public Student() {
   }
 
-  public Student(String firstName, String lastName, String username, String password, Integer gradYear, Integer scholarship) {
-    super(firstName, lastName, username, password);
+  public Student(String firstName, String lastName, String username, String password, Integer gradYear, Integer scholarship, String dtype) {
+    super(dtype, firstName, lastName, username, password);
     this.gradYear = gradYear;
     this.scholarship = scholarship;
   }
@@ -45,8 +45,8 @@ public class Student extends User {
     this.advisor = advisor;
   }
 
-  public Student(String firstName, String lastName, String username, String password, Integer gradYear, Integer scholarship, StudentMajor major, List<Favorite> favorites, Advisor advisor) {
-    super(firstName, lastName, username, password);
+  public Student(String firstName, String lastName, String username, String password, Integer gradYear, Integer scholarship, StudentMajor major, List<Favorite> favorites, Advisor advisor, String dtype) {
+    super(dtype, firstName, lastName, username, password);
     this.gradYear = gradYear;
     this.scholarship = scholarship;
     this.major = major;
@@ -54,8 +54,8 @@ public class Student extends User {
     this.advisor = advisor;
   }
 
-  public Student(int id, String firstName, String lastName, String username, String password, List<Phone> phones, List<Address> addresses, Integer gradYear, Integer scholarship, StudentMajor major, List<Favorite> favorites, Advisor advisor) {
-    super(id, firstName, lastName, username, password, phones, addresses);
+  public Student(int id, String firstName, String lastName, String username, String password, List<Phone> phones, List<Address> addresses, Integer gradYear, Integer scholarship, StudentMajor major, List<Favorite> favorites, Advisor advisor, String dtype) {
+    super(id, dtype, firstName, lastName, username, password, phones, addresses);
     this.gradYear = gradYear;
     this.scholarship = scholarship;
     this.major = major;
@@ -63,8 +63,8 @@ public class Student extends User {
     this.advisor = advisor;
   }
 
-  public Student(int id, String firstName, String lastName, String username, String password, List<Phone> phones, List<Address> addresses, Integer gradYear, Integer scholarship, StudentMajor major, StudentAgreement agreement, List<Favorite> favorites, Advisor advisor) {
-    super(id, firstName, lastName, username, password, phones, addresses);
+  public Student(int id, String firstName, String lastName, String username, String password, List<Phone> phones, List<Address> addresses, Integer gradYear, Integer scholarship, StudentMajor major, StudentAgreement agreement, List<Favorite> favorites, Advisor advisor, String dtype) {
+    super(id, dtype, firstName, lastName, username, password, phones, addresses);
     this.gradYear = gradYear;
     this.scholarship = scholarship;
     this.major = major;

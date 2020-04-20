@@ -26,22 +26,22 @@ public class Advisor extends User {
     this.advisedStudents = advisedStudents;
   }
 
-  public Advisor(String firstName, String lastName, String username, String password, String office, Boolean tenured, List<Student> advisedStudents) {
-    super(firstName, lastName, username, password);
+  public Advisor(String firstName, String lastName, String username, String password, String office, Boolean tenured, List<Student> advisedStudents, String dtype) {
+    super(dtype, firstName, lastName, username, password);
     this.office = office;
     this.tenured = tenured;
     this.advisedStudents = advisedStudents;
   }
 
-  public Advisor(int id, String firstName, String lastName, String username, String password, List<Phone> phones, List<Address> addresses, String office, Boolean tenured, List<Student> advisedStudents) {
-    super(id, firstName, lastName, username, password, phones, addresses);
+  public Advisor(int id, String firstName, String lastName, String username, String password, List<Phone> phones, List<Address> addresses, String office, Boolean tenured, List<Student> advisedStudents, String dtype) {
+    super(id, dtype, firstName, lastName, username, password, phones, addresses);
     this.office = office;
     this.tenured = tenured;
     this.advisedStudents = advisedStudents;
   }
 
-  public Advisor(int id, String firstName, String lastName, String username, String password, List<Phone> phones, List<Address> addresses, String office, Boolean tenured, List<Student> advisedStudents, List<JobList> jobLists) {
-    super(id, firstName, lastName, username, password, phones, addresses);
+  public Advisor(int id, String firstName, String lastName, String username, String password, List<Phone> phones, List<Address> addresses, String office, Boolean tenured, List<Student> advisedStudents, List<JobList> jobLists, String dtype) {
+    super(id, dtype, firstName, lastName, username, password, phones, addresses);
     this.office = office;
     this.tenured = tenured;
     this.advisedStudents = advisedStudents;
