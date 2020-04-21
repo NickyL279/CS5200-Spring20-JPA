@@ -2,6 +2,8 @@ package edu.northeastern.cs5200.models.users;
 
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +16,8 @@ public class User {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
+  @Column(insertable = false, updatable = false)
+  private String dtype;
   private String firstName;
   private String lastName;
   private String username;
@@ -26,21 +30,31 @@ public class User {
   public User() {
   }
 
-  public User(String firstName, String lastName, String username, String password) {
+  public User(String dtype, String firstName, String lastName, String username, String password) {
+    this.dtype = dtype;
     this.firstName = firstName;
     this.lastName = lastName;
     this.username = username;
     this.password = password;
   }
 
-  public User(int id, String firstName, String lastName, String username, String password, List<Phone> phones, List<Address> addresses) {
+  public User(int id, String dtype, String firstName, String lastName, String username, String password, List<Phone> phones, List<Address> addresses) {
     this.id = id;
+    this.dtype = dtype;
     this.firstName = firstName;
     this.lastName = lastName;
     this.username = username;
     this.password = password;
     this.phones = phones;
     this.addresses = addresses;
+  }
+
+  public String getDtype() {
+    return dtype;
+  }
+
+  public void setDtype(String dtype) {
+    this.dtype = dtype;
   }
 
   public int getId() {
