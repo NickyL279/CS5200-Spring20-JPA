@@ -61,6 +61,11 @@ public class UserController {
     return (List<JobList>) jobListRepository.findAll();
   }
 
+  @GetMapping("/api/userlogin/{username}/{password}")
+  public List<User> userLogin(@PathVariable("username") String username,
+                              @PathVariable("password") String password) {
+    return userRepository.findUserByCredentials(username,password);
+  }
 
 
   @PostMapping("/api/adduser")
