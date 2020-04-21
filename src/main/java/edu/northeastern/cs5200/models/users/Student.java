@@ -72,7 +72,13 @@ public class Student extends User {
     this.favorites = favorites;
     this.advisor = advisor;
   }
-
+  public void set(Student newStudent) {
+    this.gradYear = newStudent.gradYear;
+    this.scholarship =newStudent.scholarship;
+    this.major = newStudent.major;
+    this.favorites = newStudent.favorites;
+    this.advisor = newStudent.advisor;
+  }
   public StudentAgreement getAgreement() {
     return agreement;
   }

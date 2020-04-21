@@ -146,7 +146,24 @@ public class UserController {
    user.set(newUser);
    return userRepository.save(user);
   }
-
+  //update student
+  @PutMapping("/api/students/{studentId}")
+  public Student updateStudent(
+          @PathVariable("studentId") int id,
+          @RequestBody Student newStudent) {
+    Student student = studentRepository.findById(id).get();
+    student.set(newStudent);
+    return studentRepository.save(student);
+  }
+  //update advisor
+  @PutMapping("/api/advisors/{advisorId}")
+  public Advisor updateAdvisor(
+          @PathVariable("advisorId") int id,
+          @RequestBody Advisor newAdvisor) {
+    Advisor advisor = advisorRepository.findById(id).get();
+    advisor.set(newAdvisor);
+    return advisorRepository.save(advisor);
+  }
 
   //find all applications submitted by a student
   @GetMapping("/api/student/{studentId}/applications")

@@ -47,7 +47,12 @@ public class Advisor extends User {
     this.advisedStudents = advisedStudents;
     this.jobLists = jobLists;
   }
-
+  public void set(Advisor newAdvisor) {
+    this.office = newAdvisor.office;
+    this.tenured = newAdvisor.tenured;
+    this.advisedStudents = newAdvisor.advisedStudents;
+    this.jobLists = newAdvisor.jobLists;
+  }
   public List<JobList> getJobLists() {
     return jobLists;
   }
