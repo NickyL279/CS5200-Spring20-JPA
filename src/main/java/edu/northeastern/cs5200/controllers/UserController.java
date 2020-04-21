@@ -137,8 +137,18 @@ public class UserController {
           (@PathVariable("jobListId") int id) {
     jobListRepository.deleteById(id);
   }
+ // update user type
+ @PutMapping("/api/users/{userId}")
+ public User updateUser(
+         @PathVariable("userId") int id,
+         @RequestBody User newUser) {
+   User user = userRepository.findById(id).get();
+   user.set(newUser);
+   return userRepository.save(user);
+  }
 
-//find all applications submitted by a student
+
+  //find all applications submitted by a student
   @GetMapping("/api/student/{studentId}/applications")
   public List<Application> findAllApplicationsForStudent(
           @PathVariable("studentId") int sId) {

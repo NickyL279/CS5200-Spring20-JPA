@@ -48,6 +48,13 @@ public class User {
     this.phones = phones;
     this.addresses = addresses;
   }
+  public void set(User newUser) {
+    this.username = newUser.username;
+    this.password = newUser.password;
+    this.firstName = newUser.firstName;
+    this.lastName = newUser.lastName;
+    this.dtype=newUser.dtype;
+  }
 
   public String getDtype() {
     return dtype;
