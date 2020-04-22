@@ -15,21 +15,12 @@ public class UserController {
 
   @Autowired
   UserRepository userRepository;
-
   @Autowired
   AdvisorRepository advisorRepository;
-
   @Autowired
   StudentRepository studentRepository;
-
-  @Autowired
-  ApplicationRepository applicationRepository;
   @Autowired
   AdminRepository adminRepository;
-  @Autowired
-  JobRepository jobRepository;
-  @Autowired
-  JobListRepository jobListRepository;
 
 //api's for find all
   @GetMapping("/api/allUsers")
@@ -47,18 +38,6 @@ public class UserController {
   @GetMapping("/api/allAdmins")
   public List<Admin> allAdmins() {
     return (List<Admin>) adminRepository.findAll();
-  }
-  @GetMapping("/api/allApplications")
-  public List<Application> allApplications() {
-    return (List<Application>) applicationRepository.findAll();
-  }
-  @GetMapping("/api/allJobs")
-  public List<Job> allJobs() {
-    return (List<Job>) jobRepository.findAll();
-  }
-  @GetMapping("/api/allJobList")
-  public List<JobList> allJobList() {
-    return (List<JobList>) jobListRepository.findAll();
   }
 
   //user login
@@ -84,21 +63,7 @@ public class UserController {
           (@PathVariable("advisorId") int id) {
     advisorRepository.findById(id);
   }
-  @GetMapping("/api/jobById/{jobId}")
-  public void findJob
-          (@PathVariable("jobId") int id) {
-    jobRepository.findById(id);
-  }
-  @GetMapping("/api/jobListById/{jobListId}")
-  public void findJobList
-          (@PathVariable("jobListId") int id) {
-    jobListRepository.findById(id);
-  }
-  @GetMapping("/api/applicationById/{applicationId}")
-  public void findApplication
-          (@PathVariable("applicationId") int id) {
-    applicationRepository.findById(id);
-  }
+
   @GetMapping("/api/adminById/{adminId}")
   public void findAdmin
           (@PathVariable("adminId") int id) {
@@ -123,19 +88,7 @@ public class UserController {
   public Admin createAdmin(@RequestBody Admin admin) {
     return adminRepository.save(admin);
   }
-  @PostMapping("/api/addapplication")
-  public Application createApplication(@RequestBody Application application) {
-    return applicationRepository.save(application);
-  }
 
-  @PostMapping("/api/addJob")
-  public Job createJob(@RequestBody Job job) {
-    return jobRepository.save(job);
-  }
-  @PostMapping("/api/addJobList")
-  public JobList createJobList(@RequestBody JobList jobList) {
-    return jobListRepository.save(jobList);
-  }
   //delete api's
   @DeleteMapping("/api/users/{userId}")
   public void deleteUser
@@ -159,23 +112,6 @@ public class UserController {
     adminRepository.deleteById(id);
   }
 
-  @DeleteMapping("/api/applications/{applicationId}")
-  public void deleteApplication
-          (@PathVariable("applicationId") int id) {
-    applicationRepository.deleteById(id);
-  }
-
-  @DeleteMapping("/api/jobs/{jobId}")
-  public void deleteJob
-          (@PathVariable("jobId") int id) {
-    jobRepository.deleteById(id);
-  }
-
-  @DeleteMapping("/api/jobLists/{jobListId}")
-  public void deleteJobList
-          (@PathVariable("jobListId") int id) {
-    jobListRepository.deleteById(id);
-  }
  // update user type
  @PutMapping("/api/users/{userId}")
  public User updateUser(
@@ -213,12 +149,4 @@ public class UserController {
     return student.getApplication();
   }
 
-  //find all applications received for a job
-  @GetMapping("/api/job/{jobId}/applications")
-  public List<Application> findAllApplicationsForJob(
-          @PathVariable("jobId") int jId) {
-    Job job = jobRepository.findById(jId).orElse(null);
-    assert job != null;
-    return job.getApplications();
-  }
 }
