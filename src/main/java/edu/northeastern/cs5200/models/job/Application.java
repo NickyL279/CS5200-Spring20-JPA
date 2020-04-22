@@ -1,5 +1,7 @@
 package edu.northeastern.cs5200.models.job;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -22,6 +24,7 @@ public class Application {
   @Enumerated(EnumType.STRING)
   private ApplicationStatus applicationStatus;
   @ManyToOne
+  @JsonIgnore
   private Student student;
   @ManyToOne
   private Job job;

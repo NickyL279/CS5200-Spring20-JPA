@@ -1,5 +1,7 @@
 package edu.northeastern.cs5200.models.job;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -23,6 +25,7 @@ public class Job {
   @ManyToOne
   private JobList jobList;
   @OneToMany(mappedBy = "job")
+  @JsonIgnore
   private List<Application> applications;
 
   public Job(){
