@@ -1,5 +1,6 @@
 package edu.northeastern.cs5200.models.job;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -36,7 +37,7 @@ public class JobList {
   private List<JobList> children;
 
   public JobList() {
-
+  job=new ArrayList<>();
   }
 
   public JobList(Integer id, String title, StudentMajor allowedMajor, Advisor advisor, List<Job> job, JobList parent, List<JobList> children) {
@@ -47,6 +48,11 @@ public class JobList {
     this.job = job;
     this.parent = parent;
     this.children = children;
+    job=new ArrayList<>();
+  }
+  public void addJob(Job job)
+  {
+    this.job.add(job);
   }
 
   public Integer getId() {

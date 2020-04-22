@@ -21,6 +21,8 @@ public class UserController {
   StudentRepository studentRepository;
   @Autowired
   AdminRepository adminRepository;
+  @Autowired
+  StudentAgreementRepository studentAgreementRepository;
 
 //api's for find all
   @GetMapping("/api/allUsers")
@@ -34,6 +36,10 @@ public class UserController {
   @GetMapping("/api/allStudents")
   public List<Student> allStudents() {
     return (List<Student>) studentRepository.findAll();
+  }
+  @GetMapping("/api/allStudentsAgreement")
+  public List<StudentAgreement> allStudentsAgreement() {
+    return (List<StudentAgreement>) studentAgreementRepository.findAll();
   }
   @GetMapping("/api/allAdmins")
   public List<Admin> allAdmins() {
@@ -57,6 +63,11 @@ public class UserController {
   public void findStudent
           (@PathVariable("studentId") int id) {
     studentRepository.findById(id);
+  }
+  @GetMapping("/api/studentAgreementById/{studentAgreementId}")
+  public void findStudentAgreement
+          (@PathVariable("studentAgreementId") int id) {
+    studentAgreementRepository.findById(id);
   }
   @GetMapping("/api/advisorById/{advisorId}")
   public void findAdvisor
@@ -84,6 +95,10 @@ public class UserController {
   public Student createStudent(@RequestBody Student student) {
     return studentRepository.save(student);
   }
+  @PostMapping("/api/addstudentAgreement")
+  public StudentAgreement createStudentAgreement(@RequestBody StudentAgreement studentAgreement) {
+    return studentAgreementRepository.save(studentAgreement);
+  }
   @PostMapping("/api/addadmin")
   public Admin createAdmin(@RequestBody Admin admin) {
     return adminRepository.save(admin);
@@ -100,6 +115,11 @@ public class UserController {
   public void deleteStudent
           (@PathVariable("studentId") int id) {
     studentRepository.deleteById(id);
+  }
+  @DeleteMapping("/api/studentsAgreement/{studentAgreementId}")
+  public void deleteStudentAgreement
+          (@PathVariable("studentAgreementId") int id) {
+    studentAgreementRepository.deleteById(id);
   }
   @DeleteMapping("/api/advisors/{advisorId}")
   public void deleteAdvisor

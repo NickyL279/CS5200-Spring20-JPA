@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 import edu.northeastern.cs5200.models.job.Application;
+import edu.northeastern.cs5200.models.job.Favorite;
 import edu.northeastern.cs5200.models.job.Job;
 import edu.northeastern.cs5200.models.job.JobList;
 import edu.northeastern.cs5200.models.users.Admin;
@@ -22,6 +23,7 @@ import edu.northeastern.cs5200.models.users.User;
 import edu.northeastern.cs5200.repositories.AdminRepository;
 import edu.northeastern.cs5200.repositories.AdvisorRepository;
 import edu.northeastern.cs5200.repositories.ApplicationRepository;
+import edu.northeastern.cs5200.repositories.FavoriteRepository;
 import edu.northeastern.cs5200.repositories.JobListRepository;
 import edu.northeastern.cs5200.repositories.JobRepository;
 import edu.northeastern.cs5200.repositories.StudentRepository;
@@ -34,9 +36,13 @@ public class JobController {
   @Autowired
   ApplicationRepository applicationRepository;
   @Autowired
+  FavoriteRepository favoriteRepository;
+  @Autowired
   JobRepository jobRepository;
   @Autowired
   JobListRepository jobListRepository;
+  @Autowired
+  StudentRepository studentRepository;
 
 //api's for find all
 
@@ -52,7 +58,10 @@ public class JobController {
   public List<JobList> allJobList() {
     return (List<JobList>) jobListRepository.findAll();
   }
-
+  @GetMapping("/api/allFavorites")
+  public List<Favorite> allFavorites() {
+    return (List<Favorite>) favoriteRepository.findAll();
+  }
 
   //api's for find by id
   @GetMapping("/api/jobById/{jobId}")
@@ -70,12 +79,21 @@ public class JobController {
           (@PathVariable("applicationId") int id) {
     applicationRepository.findById(id);
   }
+  @GetMapping("/api/favoriteById/{favoriteId}")
+  public void findFavorite
+          (@PathVariable("favoriteId") int id) {
+    favoriteRepository.findById(id);
+  }
 
 
 // insert api's
   @PostMapping("/api/addapplication")
   public Application createApplication(@RequestBody Application application) {
     return applicationRepository.save(application);
+  }
+  @PostMapping("/api/addfavorite")
+  public Favorite createFavorite(@RequestBody Favorite favorite) {
+    return favoriteRepository.save(favorite);
   }
 
   @PostMapping("/api/addJob")
@@ -104,6 +122,10 @@ public class JobController {
           (@PathVariable("jobListId") int id) {
     jobListRepository.deleteById(id);
   }
+  @DeleteMapping("/api/favorites/{favoriteId}")
+  public void deleteFavorite(@PathVariable("favoriteId") int id) {
+    favoriteRepository.deleteById(id);
+  }
 
   //find all applications received for a job
   @GetMapping("/api/job/{jobId}/applications")
@@ -113,4 +135,23 @@ public class JobController {
     assert job != null;
     return job.getApplications();
   }
+  //find all favorites for a student
+  @GetMapping("/api/student/{studentId}/favorites")
+  public List<Favorite> findAllFavoritesForStudent(
+          @PathVariable("studentId") int sId) {
+    Student student = studentRepository.findById(sId).orElse(null);
+    assert student != null;
+    return student.getFavorites();
+  }
+  //Add job to a job list
+  @PutMapping("/api/jobLists/{jobListId}/{jobId}")
+  public JobList updateJobList(
+          @PathVariable("jobListId") int jobListId,
+          @PathVariable("jobId") int jobId) {
+    JobList jobList = jobListRepository.findById(jobListId).get();
+    Job job=jobRepository.findById(jobId).get();
+    jobList.addJob(job);
+    return jobListRepository.save(jobList);
+  }
+
 }
