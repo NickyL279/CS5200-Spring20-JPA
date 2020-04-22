@@ -31,7 +31,7 @@ public class UserController {
   @Autowired
   JobListRepository jobListRepository;
 
-
+//api's for find all
   @GetMapping("/api/allUsers")
   public List<User> allUsers() {
     return (List<User>) userRepository.findAll();
@@ -67,8 +67,46 @@ public class UserController {
                               @PathVariable("password") String password) {
     return userRepository.findUserByCredentials(username,password);
   }
+  //api's for find by id
+  @GetMapping("/api/userById/{userId}")
+  public void findUser
+          (@PathVariable("userId") int id) {
+    userRepository.findById(id);
+  }
+
+  @GetMapping("/api/studentById/{studentId}")
+  public void findStudent
+          (@PathVariable("studentId") int id) {
+    studentRepository.findById(id);
+  }
+  @GetMapping("/api/advisorById/{advisorId}")
+  public void findAdvisor
+          (@PathVariable("advisorId") int id) {
+    advisorRepository.findById(id);
+  }
+  @GetMapping("/api/jobById/{jobId}")
+  public void findJob
+          (@PathVariable("jobId") int id) {
+    jobRepository.findById(id);
+  }
+  @GetMapping("/api/jobListById/{jobListId}")
+  public void findJobList
+          (@PathVariable("jobListId") int id) {
+    jobListRepository.findById(id);
+  }
+  @GetMapping("/api/applicationById/{applicationId}")
+  public void findApplication
+          (@PathVariable("applicationId") int id) {
+    applicationRepository.findById(id);
+  }
+  @GetMapping("/api/adminById/{adminId}")
+  public void findAdmin
+          (@PathVariable("adminId") int id) {
+    adminRepository.findById(id);
+  }
 
 
+// insert api's
   @PostMapping("/api/adduser")
   public User createUser(@RequestBody User user) {
     return userRepository.save(user);
@@ -98,6 +136,7 @@ public class UserController {
   public JobList createJobList(@RequestBody JobList jobList) {
     return jobListRepository.save(jobList);
   }
+  //delete api's
   @DeleteMapping("/api/users/{userId}")
   public void deleteUser
           (@PathVariable("userId") int id) {
@@ -182,33 +221,4 @@ public class UserController {
     assert job != null;
     return job.getApplications();
   }
-
-
-//  @GetMapping("/api/addUser")
-//  public String addUser() {
-//    userRepository.save(new User("alice", "wonder", "username", "pass"));
-//    return "done";
-//  }
-//
-//  @GetMapping("/api/addStudent")
-//  public String addStudent() {
-//    studentRepository.save(new Student("alice", "wonder", "username", "pass",2020,2000));
-//    return "done";
-//  }
-//
-//  @GetMapping("/api/addAdvisor")
-//  public String addAdvisor() {
-//    Student s1=new Student("alice", "wonder", "username", "pass",2020,2000);
-//    Student s2=new Student("Bob", "Mark", "username", "pass",2021,2000);
-//    List<Student> s=new ArrayList<>();
-//    s.add(s1);
-//    s.add(s2);
-//
-//    advisorRepository.save(new Advisor("Adam", "Copper", "username", "pass","A1",true,s));
-//    return "done";
-//  }
-
-
-
-
 }
