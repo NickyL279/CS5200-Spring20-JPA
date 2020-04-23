@@ -81,6 +81,15 @@ public class UserController {
     adminRepository.findById(id);
   }
 
+  //find all applications submitted by a student
+  @GetMapping("/api/student/{studentId}/applications")
+  public List<Application> findAllApplicationsForStudent(
+          @PathVariable("studentId") int sId) {
+    Student student = studentRepository.findById(sId).orElse(null);
+    assert student != null;
+    return student.getApplication();
+  }
+
 
 // insert api's
   @PostMapping("/api/adduser")
@@ -160,13 +169,6 @@ public class UserController {
     return advisorRepository.save(advisor);
   }
 
-  //find all applications submitted by a student
-  @GetMapping("/api/student/{studentId}/applications")
-  public List<Application> findAllApplicationsForStudent(
-          @PathVariable("studentId") int sId) {
-    Student student = studentRepository.findById(sId).orElse(null);
-    assert student != null;
-    return student.getApplication();
-  }
+
 
 }
