@@ -63,6 +63,23 @@ public class JobController {
     return (List<Favorite>) favoriteRepository.findAll();
   }
 
+  //find all applications received for a job
+  @GetMapping("/api/job/{jobId}/applications")
+  public List<Application> findAllApplicationsForJob(
+          @PathVariable("jobId") int jId) {
+    Job job = jobRepository.findById(jId).orElse(null);
+    assert job != null;
+    return job.getApplications();
+  }
+  //find all favorites for a student
+  @GetMapping("/api/student/{studentId}/favorites")
+  public List<Favorite> findAllFavoritesForStudent(
+          @PathVariable("studentId") int sId) {
+    Student student = studentRepository.findById(sId).orElse(null);
+    assert student != null;
+    return student.getFavorites();
+  }
+
   //api's for find by id
   @GetMapping("/api/jobById/{jobId}")
   public void findJob
@@ -127,22 +144,7 @@ public class JobController {
     favoriteRepository.deleteById(id);
   }
 
-  //find all applications received for a job
-  @GetMapping("/api/job/{jobId}/applications")
-  public List<Application> findAllApplicationsForJob(
-          @PathVariable("jobId") int jId) {
-    Job job = jobRepository.findById(jId).orElse(null);
-    assert job != null;
-    return job.getApplications();
-  }
-  //find all favorites for a student
-  @GetMapping("/api/student/{studentId}/favorites")
-  public List<Favorite> findAllFavoritesForStudent(
-          @PathVariable("studentId") int sId) {
-    Student student = studentRepository.findById(sId).orElse(null);
-    assert student != null;
-    return student.getFavorites();
-  }
+
   //Add job to a job list
   @PutMapping("/api/jobLists/{jobListId}/{jobId}")
   public JobList updateJobList(

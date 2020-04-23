@@ -24,7 +24,6 @@ public class Favorite {
   private Date followup;
 
   @ManyToOne
-  @JsonIgnore
   private Student student;
 
   @ManyToOne

@@ -1,5 +1,7 @@
 package edu.northeastern.cs5200.models.users;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -21,6 +23,7 @@ public class Student extends User {
 
 
   @OneToMany(mappedBy = "student")
+  @JsonIgnore
   private List<Favorite> favorites;
   @OneToMany(mappedBy = "student")
   private List<Application> application;
