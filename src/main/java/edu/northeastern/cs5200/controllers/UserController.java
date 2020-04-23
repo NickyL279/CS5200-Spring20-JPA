@@ -132,7 +132,7 @@ public class UserController {
     adminRepository.deleteById(id);
   }
 
- // update user type
+ // update user
  @PutMapping("/api/users/{userId}")
  public User updateUser(
          @PathVariable("userId") int id,

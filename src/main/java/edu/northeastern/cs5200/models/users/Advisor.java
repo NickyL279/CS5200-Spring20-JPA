@@ -1,5 +1,7 @@
 package edu.northeastern.cs5200.models.users;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -13,6 +15,7 @@ public class Advisor extends User {
   private Boolean tenured;
 
   @OneToMany(mappedBy = "advisor")
+  @JsonIgnore
   private List<Student> advisedStudents;
 
   @OneToMany(mappedBy = "advisor")
